@@ -1,9 +1,9 @@
-import { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Importa Axios
 
-const AuthContext = createContext();
+const AuthContext = createContext({});
 
 export default AuthContext;
 
@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
     () => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null
   );
   const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const loginUser = async (credentials) => {
@@ -30,7 +29,7 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens(data);
         setUser(jwt_decode(data.access));
         localStorage.setItem('authTokens', JSON.stringify(data));
-        navigate('/agendar');
+        navigate('/user/agendar');
       } else {
         alert('Invalid username or password');
       }
@@ -100,7 +99,6 @@ export const AuthProvider = ({ children }) => {
     authTokens,
     loginUser,
     logoutUser,
-    errors
   };
 
   return (

@@ -1,24 +1,26 @@
 import React, { useContext, useState} from 'react';
 import AuthContext from '../Context/authContext';
-
+import { useNavigate } from 'react-router';
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
-    email: '',
-    password: ''
-  });
+  const { loginUser } = useContext(AuthContext);
+	const [credentials, setCredentials] = useState({
+    username:"",
+    password:""
+  })
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setCredentials({
-      ...credentials,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    AuthContext.loginUser(credentials);
+  const handleChange = (e) =>{
+    setCredentials(prev=>({...prev, [e.target.name]: e.target.value}))
+  }
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try{
+      await loginUser(credentials)
+      navigate("/user/agendar")
+    }catch(err){
+      console.log("ERROR")
+    }
   };
 
     return (
@@ -27,16 +29,16 @@ const Login = () => {
         <h1 className="text-3xl font-semibold text-center text-blue-600">
             Iniciar Sesion
           </h1>
-          <form className="mt-6 bg-green-560" onSubmit={handleSubmit}>
+          <form className="mt-6 bg-green-560" onSubmit={handleLogin}>
             <div className="mb-2">
               <label htmlFor="email" className="block text-xl font-semibold text-gray-800">
                 Correo
               </label>
               <input
                 type="email"
-                name="email"
+                name="username"
                 onChange={handleChange}
-                value={credentials.email}
+                required
                 placeholder='...@alu.ucm.cl / @ucm.cl'
                 className="text-xl block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-blue-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -48,8 +50,8 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
+                required
                 onChange={handleChange}
-                value={credentials.password}
                 placeholder='Contraseña'
                 className="text-xl block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-blue-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />

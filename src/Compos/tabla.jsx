@@ -15,24 +15,6 @@ export default function Tabla() {
   const [options, setOptions] = useState([]);
   const [CampoTexto, setCampoTexto] = useState("");
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await api.get('/profile');
-        setOptions(response.data);
-      } catch (error) {
-        // Handle error or redirect to login
-      }
-    };
-
-    fetchProfile();
-  }, []);
-
-  if (!options) {
-    return <Login></Login>;
-  }
-
-
  // const handleSumbit = async (e) => {
  //   e.preventDefault();
 //
@@ -83,7 +65,6 @@ export default function Tabla() {
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-white-200 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="Correo"
-                ref={Correo}
                 type="email"
                 placeholder="Correo"
                 value={RCorreo}

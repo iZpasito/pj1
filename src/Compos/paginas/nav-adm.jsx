@@ -24,10 +24,10 @@ function Navad(){
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="text-xl font-medium flex flex-col p-4 md:p-0 mt-4 border border-blue-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-blue-600 md:dark:bg-blue-600 dark:border-blue-400">
         <li>
-          <NavLink to='/adm' className="rounded-none block py-2 pl-3 pr-4 text-blue-900 rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Agendar</NavLink>
+          <NavLink to='/admin/agendar' className="rounded-none block py-2 pl-3 pr-4 text-blue-900 rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Agendar</NavLink>
         </li>
         <li>
-          <NavLink to="/informes" className="rounded-none block py-2 pl-3 pr-4 text-blue-900 rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Informes</NavLink>
+          <NavLink to="/admin/informes" className="rounded-none block py-2 pl-3 pr-4 text-blue-900 rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Informes</NavLink>
         </li>
         <li>
           <NavLink to='/' className="rounded-none block py-2 pl-3 pr-4 text-blue-900 rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Salir</NavLink>
